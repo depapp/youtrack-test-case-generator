@@ -1,0 +1,17 @@
+{
+  "name": "youtrack-test-case-generator",
+  "version": "1.0.0",
+  "description": "YouTrack plugin for manual and AI-powered test case creation",
+  "scripts": {
+    "package": "zip -r test-case-generator.zip manifest.json icon.svg icon-dark.svg widgets/ README.md"
+  },
+  "keywords": [
+    "youtrack",
+    "plugin",
+    "test-cases",
+    "ai",
+    "testing"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Case Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Compact button view -->
+    <div id="compact-view" class="compact-container">
+        <button id="open-generator-btn" class="btn btn-primary btn-large">
+            Create Test Case
+        </button>
+    </div>
+
+    <!-- Modal overlay -->
+    <div id="modal-overlay" class="modal-overlay hidden">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2>Test Case Generator</h2>
+                <button id="close-modal-btn" class="close-btn">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <!-- Tab Navigation -->
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="manual">Manual Creation</button>
+                    <button class="tab-btn" data-tab="ai">AI Generation</button>
+                </div>
+
+                <!-- Manual Creation Tab -->
+                <div id="manual-tab" class="tab-content active">
+                    <div class="form-group">
+                        <label for="test-case-count">Number of Test Cases:</label>
+                        <input type="number" id="test-case-count" min="1" max="10" value="1">
+                    </div>
+
+                    <div id="general-title-container" class="form-group hidden">
+                        <label for="general-title">General Title (for all test cases):</label>
+                        <input type="text" id="general-title" placeholder="e.g., Login Feature Test Cases">
+                        <small>This will be the issue title when creating multiple test cases</small>
+                    </div>
+
+                    <div id="test-cases-container">
+                        <!-- Test case forms will be dynamically added here -->
+                    </div>
+
+                    <button type="button" class="btn btn-primary" id="create-manual-btn">Create Test Cases</button>
+                </div>
+
+                <!-- AI Generation Tab -->
+                <div id="ai-tab" class="tab-content">
+                    <form id="ai-form">
+                        <div class="form-group">
+                            <label for="ai-api-key">AI API Key:</label>
+                            <input type="password" id="ai-api-key" required placeholder="Enter your OpenAI or Anthropic API key">
+                            <small>Your API key is not stored and only used for this session</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ai-provider">AI Provider:</label>
+                            <select id="ai-provider">
+                                <option value="openai">OpenAI (GPT-4)</option>
+                                <option value="anthropic">Anthropic (Claude)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="feature-description">Feature Description:</label>
+                            <textarea id="feature-description" rows="4" required 
+                                placeholder="Describe the feature you want to test (e.g., 'User login with email and password')"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="test-count">Number of Test Cases:</label>
+                            <input type="number" id="test-count" min="1" max="10" value="3">
+                        </div>
+
+                        <button type="button" class="btn btn-primary" id="generate-ai-btn">Generate Test Cases</button>
+                    </form>
+
+                    <div id="generated-tests" class="hidden">
+                        <h3>Generated Test Cases</h3>
+                        <div id="test-list"></div>
+                    </div>
+                </div>
+
+                <!-- Loading Indicator -->
+                <div id="loading" class="loading hidden">
+                    <div class="spinner"></div>
+                    <p>Processing...</p>
+                </div>
+
+                <!-- Status Messages -->
+                <div id="status" class="status hidden"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>

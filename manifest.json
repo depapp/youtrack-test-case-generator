@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json.schemastore.org/youtrack-app.json",
+  "name": "test-case-generator",
+  "title": "Test Case Generator",
+  "description": "Create test cases manually or generate them using AI",
+  "version": "1.0.0",
+  "url": "https://github.com/depapp/youtrack-test-case-generator",
+  "icon": "icon.svg",
+  "iconDark": "icon-dark.svg",
+  "minYouTrackVersion": "2022.2.0",
+  "vendor": {
+    "name": "Depa Panjie Purnama",
+    "url": "https://depapp.github.io",
+    "email": "depapanjiep@gmail.com"
+  },
+  "widgets": [
+    {
+      "key": "test-case-widget",
+      "name": "Test Case Generator",
+      "description": "Create test cases manually or generate them using AI",
+      "extensionPoint": "ISSUE_FIELD_PANEL_FIRST",
+      "indexPath": "test-case-widget/index.html",
+      "permissions": ["READ_ISSUE", "CREATE_ISSUE", "UPDATE_ISSUE"],
+      "expectedDimensions": { 
+        "height": 80, 
+        "width": 300 
+      }
+    }
+  ]
+}
