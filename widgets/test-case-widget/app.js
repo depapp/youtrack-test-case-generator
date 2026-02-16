@@ -1,6 +1,8 @@
 // YouTrack Widget API
 let host = null;
 let projectId = null;
+let isNewIssuePage = false;
+let currentIssueId = null; // Store current issue ID for linking
 
 // Initialize the widget
 async function init() {
@@ -16,10 +18,12 @@ async function init() {
         // Get current issue context using YTApp.entity
         // YTApp.entity contains the current entity (issue) context
         if (typeof YTApp !== 'undefined' && YTApp.entity && YTApp.entity.id) {
+            currentIssueId = YTApp.entity.id; // Store for linking
             try {
                 const issue = await host.fetchYouTrack(`issues/${YTApp.entity.id}?fields=id,project(id)`);
                 projectId = issue?.project?.id;
                 console.log('Project ID loaded:', projectId);
+                console.log('Current Issue ID:', currentIssueId);
             } catch (err) {
                 console.error('Failed to fetch issue:', err);
                 // Try alternative approach - get from URL
@@ -55,7 +59,9 @@ function tryGetProjectFromUrl() {
                 host.fetchYouTrack(`issues/${issueId}?fields=id,project(id)`)
                     .then(issue => {
                         projectId = issue?.project?.id;
+                        currentIssueId = issueId; // Store for linking
                         console.log('Project ID loaded from URL:', projectId);
+                        console.log('Current Issue ID:', currentIssueId);
                     })
                     .catch(err => {
                         console.error('Failed to fetch issue from URL:', err);
@@ -474,6 +480,17 @@ async function createTestCase(title, description) {
             body: issueData
         });
 
+        // Link the created test case to the original issue (if exists)
+        if (currentIssueId && response && response.id) {
+            try {
+                await linkIssues(currentIssueId, response.id);
+                console.log(`Linked test case ${response.id} to issue ${currentIssueId}`);
+            } catch (linkError) {
+                console.error('Failed to link issues:', linkError);
+                // Don't throw error, issue was created successfully
+            }
+        }
+
         return response;
     } catch (error) {
         console.error('Create issue error:', error);
@@ -481,6 +498,24 @@ async function createTestCase(title, description) {
         if (error.status === 500) {
             throw new Error('Failed to create issue. Please check that all required fields are configured in your project.');
         }
+        throw error;
+    }
+}
+
+// Link two issues with "relates to" link type
+async function linkIssues(sourceIssueId, targetIssueId) {
+    try {
+        const linkData = {
+            issues: [{ id: targetIssueId }],
+            linkType: { name: "relates to" }
+        };
+        
+        await host.fetchYouTrack(`issues/${sourceIssueId}/links`, {
+            method: 'POST',
+            body: linkData
+        });
+    } catch (error) {
+        console.error('Link issues error:', error);
         throw error;
     }
 }

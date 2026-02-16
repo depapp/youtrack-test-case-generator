@@ -5,10 +5,10 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    font-size: 14px;
+    font-family: var(--ring-font-family);
+    font-size: 13px;
     line-height: 1.5;
-    color: var(--text-primary, #333);
+    color: var(--text-primary);
     background: transparent !important;
     overflow: hidden;
 }
@@ -27,37 +27,39 @@ html.ring-ui-theme-light {
     background-color: transparent !important;
 }
 
-/* CSS Variables for theming */
+/* CSS Variables for theming - Ring UI compatible */
 :root {
     --bg-modal: #ffffff;
     --bg-overlay: rgba(0, 0, 0, 0.5);
     --bg-input: #ffffff;
-    --bg-button: #0066cc;
-    --bg-button-hover: #0052a3;
-    --bg-secondary: #f5f5f5;
-    --bg-card: #f9f9f9;
-    --border-color: #e0e0e0;
-    --text-primary: #1a1a1a;
-    --text-secondary: #666;
-    --text-placeholder: #999;
-    --shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    --bg-button: #167dff;
+    --bg-button-hover: #0e6dd8;
+    --bg-secondary: #f7f7f7;
+    --bg-card: #ffffff;
+    --border-color: #d0d0d0;
+    --text-primary: #000000;
+    --text-secondary: #737577;
+    --text-placeholder: #999999;
+    --shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --ring-border-radius: 3px;
+    --ring-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
 
-/* Dark theme detection */
+/* Dark theme detection - Ring UI compatible */
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg-modal: #2b2b2b;
+        --bg-modal: #27282c;
         --bg-overlay: rgba(0, 0, 0, 0.7);
-        --bg-input: #3c3c3c;
-        --bg-button: #0066cc;
-        --bg-button-hover: #0052a3;
-        --bg-secondary: #333333;
-        --bg-card: #363636;
-        --border-color: #4a4a4a;
-        --text-primary: #e8e8e8;
-        --text-secondary: #b0b0b0;
-        --text-placeholder: #808080;
-        --shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        --bg-input: #3c3f41;
+        --bg-button: #3592ff;
+        --bg-button-hover: #5ca7ff;
+        --bg-secondary: #313438;
+        --bg-card: #2b2d30;
+        --border-color: #555555;
+        --text-primary: #bbbbbb;
+        --text-secondary: #868a91;
+        --text-placeholder: #6c707e;
+        --shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
     }
 }
 
@@ -73,11 +75,12 @@ html.ring-ui-theme-light {
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: 14px 20px;
-    font-size: 15px;
-    font-weight: 600;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 400;
     white-space: nowrap;
     text-align: center;
+    line-height: 20px;
 }
 
 /* Modal overlay */
@@ -107,7 +110,7 @@ html.ring-ui-theme-light {
 
 .modal-container {
     background: var(--bg-modal);
-    border-radius: 12px;
+    border-radius: var(--ring-border-radius);
     width: 100%;
     max-width: 700px;
     max-height: 90vh;
@@ -115,6 +118,7 @@ html.ring-ui-theme-light {
     flex-direction: column;
     box-shadow: var(--shadow);
     animation: slideUp 0.3s ease-out;
+    border: 1px solid var(--border-color);
 }
 
 @keyframes slideUp {
@@ -137,8 +141,8 @@ html.ring-ui-theme-light {
 }
 
 .modal-header h2 {
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: 500;
     margin: 0;
     color: var(--text-primary);
 }
@@ -146,18 +150,18 @@ html.ring-ui-theme-light {
 .close-btn {
     background: none;
     border: none;
-    font-size: 28px;
+    font-size: 24px;
     line-height: 1;
     color: var(--text-secondary);
     cursor: pointer;
     padding: 0;
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 6px;
-    transition: all 0.2s;
+    border-radius: var(--ring-border-radius);
+    transition: all 0.15s;
 }
 
 .close-btn:hover {
@@ -176,67 +180,68 @@ html.ring-ui-theme-light {
 }
 
 h2 {
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 500;
     margin-bottom: 16px;
     color: var(--text-primary);
 }
 
 h3 {
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 500;
     margin: 20px 0 12px;
     color: var(--text-primary);
 }
 
-/* Notice */
+/* Notice - Ring UI style */
 .notice {
-    padding: 12px 16px;
-    background: #fff3cd;
-    border: 1px solid #ffc107;
-    border-radius: 6px;
+    padding: 8px 12px;
+    background: #fff9e6;
+    border: 1px solid #ffd966;
+    border-radius: var(--ring-border-radius);
     margin-bottom: 16px;
-    color: #856404;
+    color: #8c6d1f;
+    font-size: 13px;
 }
 
 @media (prefers-color-scheme: dark) {
     .notice {
-        background: #4a3f1a;
-        border-color: #6b5a1f;
-        color: #ffd966;
+        background: #3d3416;
+        border-color: #5c4d1f;
+        color: #d4b679;
     }
 }
 
-/* Tabs */
+/* Tabs - Ring UI style */
 .tabs {
     display: flex;
-    gap: 4px;
-    margin-bottom: 24px;
-    border-bottom: 2px solid var(--border-color);
+    gap: 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .tab-btn {
-    padding: 12px 24px;
+    padding: 8px 16px;
     background: none;
     border: none;
-    border-bottom: 3px solid transparent;
+    border-bottom: 2px solid transparent;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 13px;
     color: var(--text-secondary);
-    transition: all 0.2s;
-    font-weight: 500;
-    margin-bottom: -2px;
+    transition: all 0.15s;
+    font-weight: 400;
+    margin-bottom: -1px;
 }
 
 .tab-btn:hover {
     color: var(--text-primary);
     background: var(--bg-secondary);
-    border-radius: 6px 6px 0 0;
 }
 
 .tab-btn.active {
-    color: #0066cc;
-    border-bottom-color: #0066cc;
+    color: var(--bg-button);
+    border-bottom-color: var(--bg-button);
+    font-weight: 500;
 }
 
 .tab-content {
@@ -255,10 +260,10 @@ h3 {
 
 label {
     display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
+    margin-bottom: 6px;
+    font-weight: 400;
     color: var(--text-primary);
-    font-size: 14px;
+    font-size: 13px;
 }
 
 input[type="text"],
@@ -267,12 +272,12 @@ input[type="number"],
 select,
 textarea {
     width: 100%;
-    padding: 12px 14px;
+    padding: 6px 8px;
     border: 1px solid var(--border-color);
-    border-radius: 6px;
-    font-size: 14px;
+    border-radius: var(--ring-border-radius);
+    font-size: 13px;
     font-family: inherit;
-    transition: all 0.2s;
+    transition: all 0.15s;
     background: var(--bg-input);
     color: var(--text-primary);
 }
@@ -289,15 +294,16 @@ input[type="number"]:focus,
 select:focus,
 textarea:focus {
     outline: none;
-    border-color: #0066cc;
-    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+    border-color: var(--bg-button);
+    box-shadow: 0 0 0 2px rgba(53, 146, 255, 0.2);
 }
 
 small {
     display: block;
-    margin-top: 6px;
+    margin-top: 4px;
     font-size: 12px;
     color: var(--text-secondary);
+    line-height: 1.4;
 }
 
 textarea {
@@ -305,47 +311,47 @@ textarea {
     min-height: 80px;
 }
 
-/* Buttons */
+/* Buttons - Ring UI style */
 .btn {
-    padding: 12px 24px;
+    padding: 6px 12px;
     border: none;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 600;
+    border-radius: var(--ring-border-radius);
+    font-size: 13px;
+    font-weight: 400;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.15s;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 6px;
+    line-height: 20px;
 }
 
 .btn-primary {
     background: var(--bg-button);
     color: white;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
 .btn-primary:hover {
     background: var(--bg-button-hover);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
 }
 
 .btn-primary:active {
-    transform: translateY(0);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .btn-primary:disabled {
     background: var(--text-placeholder);
     cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
+    opacity: 0.5;
 }
 
 .btn-secondary {
     background: var(--bg-secondary);
     color: var(--text-primary);
     margin-left: 8px;
+    border: 1px solid var(--border-color);
 }
 
 .btn-secondary:hover {
@@ -361,77 +367,77 @@ textarea {
 }
 
 .test-case-form {
-    padding: 16px;
+    padding: 12px;
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: var(--ring-border-radius);
     background: var(--bg-card);
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 
 .test-case-form h4 {
-    font-size: 15px;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 500;
     margin-bottom: 12px;
     color: var(--text-primary);
 }
 
 .test-card {
-    padding: 16px;
+    padding: 12px;
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: var(--ring-border-radius);
     background: var(--bg-card);
-    transition: all 0.2s;
+    transition: all 0.15s;
 }
 
 .test-card:hover {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
 }
 
 .test-card h4 {
-    font-size: 15px;
-    font-weight: 600;
-    margin-bottom: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 8px;
     color: var(--text-primary);
 }
 
 .test-card p {
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     font-size: 13px;
     color: var(--text-secondary);
 }
 
 .test-card pre {
     background: var(--bg-input);
-    padding: 10px;
-    border-radius: 4px;
+    padding: 8px;
+    border-radius: var(--ring-border-radius);
     font-size: 12px;
     white-space: pre-wrap;
     word-wrap: break-word;
-    margin: 8px 0;
+    margin: 6px 0;
     border: 1px solid var(--border-color);
     color: var(--text-primary);
 }
 
 .test-card-actions {
-    margin-top: 12px;
+    margin-top: 10px;
     display: flex;
-    gap: 8px;
+    gap: 6px;
 }
 
-/* Loading */
+/* Loading - Ring UI style */
 .loading {
     text-align: center;
-    padding: 32px;
+    padding: 24px;
 }
 
 .spinner {
-    border: 3px solid var(--border-color);
-    border-top: 3px solid #0066cc;
+    border: 2px solid var(--border-color);
+    border-top: 2px solid var(--bg-button);
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
-    margin: 0 auto 16px;
+    width: 32px;
+    height: 32px;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 12px;
 }
 
 @keyframes spin {
@@ -441,39 +447,40 @@ textarea {
 
 .loading p {
     color: var(--text-secondary);
+    font-size: 13px;
 }
 
-/* Status */
+/* Status - Ring UI style */
 .status {
-    padding: 12px 16px;
-    border-radius: 6px;
-    margin-top: 16px;
-    font-size: 14px;
+    padding: 8px 12px;
+    border-radius: var(--ring-border-radius);
+    margin-top: 12px;
+    font-size: 13px;
 }
 
 .status.success {
-    background: #d4edda;
-    border: 1px solid #c3e6cb;
-    color: #155724;
+    background: #e6f4ea;
+    border: 1px solid #81c995;
+    color: #137333;
 }
 
 .status.error {
-    background: #f8d7da;
-    border: 1px solid #f5c6cb;
-    color: #721c24;
+    background: #fce8e6;
+    border: 1px solid #f28b82;
+    color: #c5221f;
 }
 
 @media (prefers-color-scheme: dark) {
     .status.success {
-        background: #1a3d1a;
-        border-color: #2d5a2d;
-        color: #7fd67f;
+        background: #1e3a28;
+        border-color: #2d5a3d;
+        color: #81c995;
     }
     
     .status.error {
-        background: #4a1a1a;
-        border-color: #6b2d2d;
-        color: #ff9999;
+        background: #3a1e1e;
+        border-color: #5a2d2d;
+        color: #f28b82;
     }
 }
 
@@ -482,19 +489,18 @@ textarea {
     display: none !important;
 }
 
-/* Scrollbar styling */
+/* Scrollbar styling - Ring UI compatible */
 .modal-body::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
 }
 
 .modal-body::-webkit-scrollbar-track {
-    background: var(--bg-secondary);
-    border-radius: 4px;
+    background: transparent;
 }
 
 .modal-body::-webkit-scrollbar-thumb {
     background: var(--border-color);
-    border-radius: 4px;
+    border-radius: 3px;
 }
 
 .modal-body::-webkit-scrollbar-thumb:hover {
