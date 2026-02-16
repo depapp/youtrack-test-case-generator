@@ -3,7 +3,7 @@
   "name": "test-case-generator",
   "title": "Test Case Generator",
   "description": "Create test cases manually or generate them using AI",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "url": "https://github.com/depapp/youtrack-test-case-generator",
   "icon": "icon.svg",
   "iconDark": "icon-dark.svg",
